@@ -1,0 +1,8 @@
+{
+    "[prisma]":{
+        "editor.formatOnSave": true
+    },
+    "[ts]":{
+        "editor.formatOnSave": true
+    }
+}
