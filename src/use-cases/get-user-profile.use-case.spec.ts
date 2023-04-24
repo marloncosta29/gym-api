@@ -23,8 +23,8 @@ describe("GetUserProfileUseCase Test", () => {
     expect(userProfile).toHaveProperty('name')
   });
 
-  test('deve retornar erro ao tentar pega ro perfil de um id que não existe', ()=>{
-    expect(async()=>{
+  test('deve retornar erro ao tentar pega ro perfil de um id que não existe', async ()=>{
+    await expect(async()=>{
         await getUserProfileUseCase.execute({id: '123456'})
     }).rejects.toBeInstanceOf(ResourceNotFoundError)
   })
