@@ -15,14 +15,21 @@ export async function authenticate(
   const { email, password } = authenticateBodySchema.parse(request.body);
 
   try {
-    const authenticateUseCase = authenticateUseCaseFactory()
-    await authenticateUseCase.execute({ email, password });
+
+    const authenticateUseCase = authenticateUseCaseFactory();
+    const { user } = await authenticateUseCase.execute({ email, password });
+
+    const token = await response.jwtSign({id: user.id}, {
+      sign:{
+       sub: user.id 
+      }
+    })
+
+    return response.status(200).send({ token });
   } catch (error) {
     if (error instanceof InvalidUserAuthenticateError) {
       return response.status(403).send({ message: error.message });
     }
-    throw error
+    throw error;
   }
-
-  return response.status(200).send();
 }

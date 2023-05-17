@@ -3,7 +3,7 @@ import { CheckInUseCase } from "./check-in.use-case";
 import { InMemoryCheckInRepository } from "@/repositories/in-memory/in-memory.check-in.repository";
 import { randomUUID } from "crypto";
 import { InMemoryGymRepository } from "@/repositories/in-memory/in-memory.gym.repository";
-import { Decimal } from "@prisma/client/runtime";
+import { Decimal } from "@prisma/client/runtime/library";
 
 let checkInrepository: InMemoryCheckInRepository;
 let gymRepository: InMemoryGymRepository;
